@@ -20,4 +20,11 @@ class CarTest {
 	void createCarTest() {
 		assertThat(car).isEqualTo(new Car(new CarName("car"),new Distance(0)));
 	}
+
+	@DisplayName("차가 이동할때 거리객체 이동 메세지를 전달하면 거리1만큼 이동된다.")
+	@Test
+	void moveTheCarTest() {
+		car.moveTheCar();
+		assertThat(car).isEqualTo(new Car(new CarName("car"),new Distance(1)));
+	}
 }
