@@ -1,6 +1,7 @@
 package racinggame.model;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,21 +38,16 @@ class CarTest {
 		assertThat(car.isSameName(new Car(name))).isEqualTo(isSame);
 	}
 
-	@DisplayName("차객체간 이동거리를 비교하여 더 멀리간 차를 반환한다.")
+	@DisplayName("차객체간 이동거리를 비교하여 더 멀리간 차객체를 반환한다.")
 	@Test
 	void maxDistanceCarTest() {
 		car.moveTheCar();
 		Car targetCar = new Car("car1");
+		Car result = this.car.maxDistanceCar(targetCar);
 
-		assertThat(car.maxDistanceCar(targetCar)).isEqualTo(car);
-	}
-
-	@DisplayName("차객체간 이동거리를 비교하여 더 멀리간 차의 이름을 반환한다.")
-	@Test
-	void maxDistanceCarNameTest() {
-		car.moveTheCar();
-		Car targetCar = new Car("car1");
-		Car car = this.car.maxDistanceCar(targetCar);
-		assertThat(car.carName()).isEqualTo("car");
+		assertAll(
+			()-> assertThat(result).isEqualTo(this.car),
+			()-> assertThat(result.carName()).isEqualTo("car")
+		);
 	}
 }
