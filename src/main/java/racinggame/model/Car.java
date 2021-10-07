@@ -17,6 +17,10 @@ public class Car {
 		this.distance = distance;
 	}
 
+	public void moveTheCar() {
+		distance.moveForward();
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
