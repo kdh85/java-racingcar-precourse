@@ -40,4 +40,11 @@ class DistanceTest {
 		}
 		assertThat(distance).isEqualTo(new Distance(maxDistance));
 	}
+
+	@DisplayName("거리를 비교하여 더 큰값을 반환한다.")
+	@Test
+	void maxDistanceTest() {
+		distance.moveForward();
+		assertThat(distance.maxDistance(new Distance())).isEqualTo(distance);
+	}
 }
