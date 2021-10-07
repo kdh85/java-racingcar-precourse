@@ -42,6 +42,10 @@ public class Car {
 		return this.distance.maxDistance(car.distance);
 	}
 
+	public String carName() {
+		return carName.name();
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
@@ -64,5 +68,4 @@ public class Car {
 			", distance=" + distance +
 			'}';
 	}
-
 }
