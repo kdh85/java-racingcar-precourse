@@ -10,12 +10,12 @@ public class CarName {
 
 	private final String carName;
 
-	public CarName(String carName) {
+	public CarName(final String carName) {
 		validationCarName(carName);
 		this.carName = carName;
 	}
 
-	private void validationCarName(String carName) {
+	private void validationCarName(final String carName) {
 		if (carName == null || carName.isEmpty()) {
 			throw new IllegalArgumentException(MSG_ERROR_EMPTY_NAME);
 		}
@@ -25,7 +25,7 @@ public class CarName {
 		}
 	}
 
-	public boolean isSameName(CarName carName) {
+	public boolean isSameName(final CarName carName) {
 		return this.equals(carName);
 	}
 

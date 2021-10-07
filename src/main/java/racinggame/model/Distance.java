@@ -14,12 +14,12 @@ public class Distance {
 		this(MIN_DISTANCE);
 	}
 
-	public Distance(int distance) {
+	public Distance(final int distance) {
 		validationDistance(distance);
 		this.distance = distance;
 	}
 
-	private void validationDistance(int distance) {
+	private void validationDistance(final int distance) {
 		if (distance < MIN_DISTANCE) {
 			throw new IllegalArgumentException(MSG_ERROR_MIN_DISTANCE);
 		}
@@ -29,7 +29,7 @@ public class Distance {
 		this.distance += MOVE_DISTANCE;
 	}
 
-	public Distance maxDistance(Distance targetDistance) {
+	public Distance maxDistance(final Distance targetDistance) {
 		if (this.distance > targetDistance.distance) {
 			return this;
 		}
