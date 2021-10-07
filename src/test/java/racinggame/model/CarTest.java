@@ -36,4 +36,13 @@ class CarTest {
 	void duplicateCarTest(String name, boolean isSame) {
 		assertThat(car.isSameName(new Car(name))).isEqualTo(isSame);
 	}
+
+	@DisplayName("차객체간 이동거리를 비교하여 더 멀리간 차를 반환한다.")
+	@Test
+	void maxDistanceCarTest() {
+		car.moveTheCar();
+		Car targetCar = new Car("car1");
+
+		assertThat(car.maxDistanceCar(targetCar)).isEqualTo(car);
+	}
 }
