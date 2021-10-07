@@ -5,6 +5,8 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class DistanceTest {
 
@@ -27,5 +29,15 @@ class DistanceTest {
 		assertThatThrownBy(
 			() -> new Distance(-1)
 		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("거리가 1만큼 이동한다.")
+	@ParameterizedTest
+	@CsvSource(value = {"1|1", "2|2", "3|3"}, delimiter = '|')
+	void moveDistanceTest(int maxCount, int maxDistance) {
+		for (int count = 0; count < maxCount; count++) {
+			distance.moveForward();
+		}
+		assertThat(distance).isEqualTo(new Distance(maxDistance));
 	}
 }
