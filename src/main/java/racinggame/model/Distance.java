@@ -29,6 +29,13 @@ public class Distance {
 		this.distance += MOVE_DISTANCE;
 	}
 
+	public Distance maxDistance(Distance targetDistance) {
+		if(this.distance > targetDistance.distance){
+			return this;
+		}
+		return targetDistance;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
