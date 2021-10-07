@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -32,5 +33,12 @@ class CarNameTest {
 		assertThatThrownBy(
 			() -> new CarName(name)
 		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("이름을 비교하여 같은지 여부를 반환한다.")
+	@ParameterizedTest
+	@CsvSource(value = {"car|true", "car1|false"}, delimiter = '|')
+	void duplicateNameTest(String name, boolean isSame) {
+		assertThat(carName.isSameName(new CarName(name))).isEqualTo(isSame);
 	}
 }
