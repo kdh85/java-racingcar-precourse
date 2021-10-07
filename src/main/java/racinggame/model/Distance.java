@@ -6,6 +6,7 @@ public class Distance {
 
 	private static final int MIN_DISTANCE = 0;
 	private static final String MSG_ERROR_MIN_DISTANCE = String.format("입력가능한 거리값은 %d이상 부터 입니다.", MIN_DISTANCE);
+	private static final int MOVE_DISTANCE = 1;
 
 	private int distance;
 
@@ -22,6 +23,10 @@ public class Distance {
 		if (distance < MIN_DISTANCE) {
 			throw new IllegalArgumentException(MSG_ERROR_MIN_DISTANCE);
 		}
+	}
+
+	public void moveForward() {
+		this.distance += MOVE_DISTANCE;
 	}
 
 	@Override
@@ -45,5 +50,4 @@ public class Distance {
 			"distance=" + distance +
 			'}';
 	}
-
 }
