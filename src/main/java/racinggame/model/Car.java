@@ -21,6 +21,10 @@ public class Car {
 		distance.moveForward();
 	}
 
+	public boolean isSameName(final Car car) {
+		return this.carName.isSameName(car.carName);
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
