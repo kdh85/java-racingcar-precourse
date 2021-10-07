@@ -1,6 +1,7 @@
 package racinggame.model;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +23,10 @@ class CarNameTest {
 	@DisplayName("문자열을 입력받아 이름을 생성한다.")
 	@Test
 	void createNameTest() {
-		assertThat(carName).isEqualTo(new CarName("car"));
+		assertAll(
+			() -> assertThat(carName).isEqualTo(new CarName("car")),
+			() -> assertThat(carName.name()).isEqualTo("car")
+		);
 	}
 
 	@DisplayName("차이름이 5글자를 초과하면 에러가 발생한다.")
