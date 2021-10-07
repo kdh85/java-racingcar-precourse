@@ -25,6 +25,23 @@ public class Car {
 		return this.carName.isSameName(car.carName);
 	}
 
+	public Car maxDistanceCar(final Car targetCar) {
+
+		if(isMaxCar(targetCar)){
+			return targetCar;
+		}
+
+		return this;
+	}
+
+	private boolean isMaxCar(final Car targetCar) {
+		return targetCar.distance.equals(maxDistance(targetCar));
+	}
+
+	private Distance maxDistance(final Car car) {
+		return this.distance.maxDistance(car.distance);
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
@@ -47,4 +64,5 @@ public class Car {
 			", distance=" + distance +
 			'}';
 	}
+
 }
