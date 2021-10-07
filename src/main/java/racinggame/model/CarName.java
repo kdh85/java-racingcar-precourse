@@ -25,6 +25,10 @@ public class CarName {
 		}
 	}
 
+	public boolean isSameName(CarName carName) {
+		return this.equals(carName);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
