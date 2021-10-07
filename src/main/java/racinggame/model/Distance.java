@@ -30,7 +30,7 @@ public class Distance {
 	}
 
 	public Distance maxDistance(Distance targetDistance) {
-		if(this.distance > targetDistance.distance){
+		if (this.distance > targetDistance.distance) {
 			return this;
 		}
 		return targetDistance;
