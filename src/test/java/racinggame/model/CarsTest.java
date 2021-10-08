@@ -11,13 +11,11 @@ import org.junit.jupiter.api.Test;
 
 class CarsTest {
 
-	private List<Car> cars;
-
 	private Cars newCars;
 
 	@BeforeEach
 	void setUp() {
-		cars = Arrays.asList(
+		List<Car> cars = Arrays.asList(
 			new Car("a"),
 			new Car("b"),
 			new Car("c"));
@@ -27,6 +25,6 @@ class CarsTest {
 	@DisplayName("차들의 콜랙션을 주입하여 차의집합을 생성한다.")
 	@Test
 	void createCarsTest() {
-		assertThat(newCars).isEqualTo(new Cars(cars));
+		assertThat(newCars).isEqualTo(new Cars("a,b,c"));
 	}
 }
