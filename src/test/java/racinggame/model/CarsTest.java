@@ -33,6 +33,18 @@ class CarsTest {
 	@Test
 	void movingEachCarsTest() {
 		newCars.moveEachCars(Collections.singletonList(1));
-		assertThat(newCars.maxDistanceCars()).isEqualTo(new Car(new CarName("b"), new Distance(1)));
+		assertThat(newCars.maxDistanceCars()).isEqualTo(new Car("b", 1));
+	}
+
+	@DisplayName("최대거리인 자동차와 동일한 거리의 차들을 반환한다.")
+	@Test
+	void sameDistanceCarsTest() {
+		newCars.moveEachCars(Arrays.asList(1, 2));
+		List<Car> maxCars = newCars.sameMaxDistanceCars();
+
+		assertThat(maxCars).containsExactly(
+			new Car("b", 1),
+			new Car("c", 1)
+		);
 	}
 }
