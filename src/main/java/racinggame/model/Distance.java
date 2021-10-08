@@ -36,6 +36,10 @@ public class Distance {
 		return targetDistance;
 	}
 
+	public int moveDistance() {
+		return distance;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
