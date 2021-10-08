@@ -54,6 +54,10 @@ public class Car {
 		return carName.name();
 	}
 
+	public int distance() {
+		return distance.moveDistance();
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
