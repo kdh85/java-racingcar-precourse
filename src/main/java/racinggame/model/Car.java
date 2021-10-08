@@ -12,6 +12,10 @@ public class Car {
 		this(new CarName(carName), new Distance());
 	}
 
+	public Car(final String carName, final int distance) {
+		this(new CarName(carName), new Distance(distance));
+	}
+
 	public Car(final CarName carName, final Distance distance) {
 		this.carName = carName;
 		this.distance = distance;
@@ -27,7 +31,7 @@ public class Car {
 
 	public Car maxDistanceCar(final Car targetCar) {
 
-		if(isMaxCar(targetCar)){
+		if (isMaxCar(targetCar)) {
 			return targetCar;
 		}
 
@@ -36,6 +40,10 @@ public class Car {
 
 	private boolean isMaxCar(final Car targetCar) {
 		return targetCar.distance.equals(maxDistance(targetCar));
+	}
+
+	public boolean isSameDistance(final Car targetCar) {
+		return targetCar.distance.equals(this.distance);
 	}
 
 	private Distance maxDistance(final Car car) {
