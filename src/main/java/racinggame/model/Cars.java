@@ -9,6 +9,8 @@ import java.util.Objects;
 public class Cars {
 
 	private static final String SPLIT_SEPARATOR = ",";
+	private static final String MSG_ERROR_CAR_INDEX = "유효한 차량선택이 아닙니다.";
+	private static final int FIRST_CAR_INDEX = 0;
 
 	private final List<Car> cars;
 
@@ -31,6 +33,40 @@ public class Cars {
 
 	private static List<String> splitNames(final String names) {
 		return Arrays.asList(names.split(SPLIT_SEPARATOR));
+	}
+
+	public void moveEachCars(final List<Integer> movingCarIndex) {
+
+		for (Integer carIndex : movingCarIndex) {
+			validationCarIndex(carIndex);
+			cars.get(carIndex).moveTheCar();
+		}
+	}
+
+	private void validationCarIndex(final Integer carIndex) {
+
+		if (carIndex > carCount()) {
+			throw new IllegalArgumentException(MSG_ERROR_CAR_INDEX);
+		}
+	}
+
+	private int carCount() {
+		return cars.size();
+	}
+
+	public Car maxDistanceCars() {
+
+		Car maxCar = firstCar();
+
+		for (Car car : cars) {
+			maxCar = car.maxDistanceCar(maxCar);
+		}
+
+		return maxCar;
+	}
+
+	private Car firstCar() {
+		return cars.get(FIRST_CAR_INDEX);
 	}
 
 	@Override
