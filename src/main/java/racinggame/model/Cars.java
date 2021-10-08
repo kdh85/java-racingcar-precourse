@@ -55,7 +55,6 @@ public class Cars {
 	}
 
 	public Car maxDistanceCars() {
-
 		Car maxCar = firstCar();
 
 		for (Car car : cars) {
@@ -67,6 +66,23 @@ public class Cars {
 
 	private Car firstCar() {
 		return cars.get(FIRST_CAR_INDEX);
+	}
+
+	public List<Car> sameMaxDistanceCars() {
+
+		List<Car> maxCars = new ArrayList<>();
+
+		for (Car car : cars) {
+			addMaxCar(maxCars, car);
+		}
+
+		return maxCars;
+	}
+
+	private void addMaxCar(final List<Car> maxCars, final Car car) {
+		if(car.isSameDistance(maxDistanceCars())){
+			maxCars.add(car);
+		}
 	}
 
 	@Override
@@ -90,5 +106,4 @@ public class Cars {
 			"cars=" + cars +
 			'}';
 	}
-
 }
