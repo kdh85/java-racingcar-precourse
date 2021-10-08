@@ -27,4 +27,12 @@ class CarsTest {
 	void createCarsTest() {
 		assertThat(newCars).isEqualTo(new Cars("a,b,c"));
 	}
+
+	@DisplayName("이동할 차량을 선택받으면 해당차량만 움직이고 이동거리를 비교하여 결과를 확인한다.")
+	@Test
+	void movingEachCarsTest() {
+		newCars.moveEachCars(Arrays.asList(1,2));
+		assertThat(newCars.maxDistanceCars()).isEqualTo(new Car(new CarName("b"),new Distance(1)));
+		System.out.println("newCars = " + newCars);
+	}
 }
