@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.StringJoiner;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 import nextstep.utils.Randoms;
 
@@ -13,6 +15,7 @@ public class Racing {
 	private static final int START_NUMBER = 0;
 	private static final int END_NUMBER = 9;
 	private static final int MOVABLE_NUMBER = 4;
+	private static final String WINNER_SEPARATOR = ", ";
 
 	private final Round round;
 
@@ -63,6 +66,16 @@ public class Racing {
 			return true;
 		}
 		return false;
+	}
+
+	public String winner(){
+		StringJoiner joiner = new StringJoiner(WINNER_SEPARATOR);
+
+		for (Car car : cars.sameMaxDistanceCars()) {
+			joiner.add(car.carName());
+		}
+
+		return joiner.toString();
 	}
 
 	@Override
