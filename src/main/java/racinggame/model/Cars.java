@@ -3,7 +3,9 @@ package racinggame.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Cars {
@@ -50,7 +52,7 @@ public class Cars {
 		}
 	}
 
-	private int carCount() {
+	public int carCount() {
 		return cars.size();
 	}
 
@@ -83,6 +85,15 @@ public class Cars {
 		if(car.isSameDistance(maxDistanceCars())){
 			maxCars.add(car);
 		}
+	}
+
+	public Map<String, Integer> result() {
+		Map<String, Integer> result = new HashMap<>();
+
+		for (Car car : cars) {
+			result.put(car.carName(), car.distance());
+		}
+		return result;
 	}
 
 	@Override
