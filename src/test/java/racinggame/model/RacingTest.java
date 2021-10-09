@@ -15,7 +15,11 @@ class RacingTest {
 		Racing racing = new Racing(1, "a,b,c");
 		racing.play();
 
-		assertThat(racing.racingResult()).containsValues(0, 1);
+		assertThat(racing.racingResult()).anySatisfy(
+			(name, distance) -> {
+				assertThat(distance).isGreaterThanOrEqualTo(0);
+				assertThat(distance).isLessThanOrEqualTo(1);
+			});
 	}
 
 	@DisplayName("입력한 라운드값과 현재 라운드값이 동일한지 확인한다.")
