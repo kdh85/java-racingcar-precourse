@@ -28,10 +28,10 @@ class RoundTest {
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 
-	@DisplayName("현재의 라운드값이 총 라운드값과 같지 않은지 비교한다.")
+	@DisplayName("현재의 라운드값이 총 라운드값과 같은지 비교한다.")
 	@Test
 	void isSameRound() {
-		assertThat(round.isNotSameRound()).isTrue();
+		assertThat(round.isMaxRound()).isTrue();
 	}
 
 	@DisplayName("입력받은 최대 라운드값을 반환한다.")

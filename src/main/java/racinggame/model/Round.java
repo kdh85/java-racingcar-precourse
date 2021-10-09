@@ -27,8 +27,8 @@ public class Round {
 		return currentRound.incrementAndGet();
 	}
 
-	public boolean isNotSameRound() {
-		return round != currentRound.get();
+	public boolean isMaxRound() {
+		return round == currentRound.get();
 	}
 
 	public int maxRound() {
