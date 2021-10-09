@@ -57,6 +57,14 @@ public class Racing {
 		return cars.result();
 	}
 
+	public boolean isContinue() {
+		if(!round.isMaxRound()){
+			round.increaseRound();
+			return true;
+		}
+		return false;
+	}
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
