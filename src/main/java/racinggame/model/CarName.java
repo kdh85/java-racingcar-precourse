@@ -5,8 +5,8 @@ import java.util.Objects;
 public class CarName {
 
 	private static final int MAX_CAR_NAME_LENGTH = 5;
-	private static final String MSG_ERROR_NAME_LENGTH = String.format("차량이름은 최대 %d글자까지 가능합니다.", MAX_CAR_NAME_LENGTH);
-	private static final String MSG_ERROR_EMPTY_NAME = "차량이름이 비었습니다. 이름을 입력해주세요.";
+	private static final String MSG_ERROR_NAME_LENGTH = String.format("[ERROR] 차량이름은 최대 %d글자까지 가능합니다.", MAX_CAR_NAME_LENGTH);
+	private static final String MSG_ERROR_EMPTY_NAME = "[ERROR] 차량이름이 비었습니다. 이름을 입력해주세요.";
 
 	private final String carName;
 
