@@ -53,4 +53,13 @@ class RoundTest {
 	void maxRound() {
 		assertThat(round.maxRound()).isEqualTo(1);
 	}
+
+	@DisplayName("문자열 카운트값을 검증하여 숫자 외의 문자가 입력되면 에러가 반환된다.")
+	@ParameterizedTest
+	@CsvSource(value = {"a", "A", "아", "!"})
+	void validationStringValueTest(String count) {
+		assertThatThrownBy(
+			() -> new Round(count)
+		).isInstanceOf(NumberFormatException.class);
+	}
 }
