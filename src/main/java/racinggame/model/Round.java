@@ -6,11 +6,28 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Round {
 
 	private static final int ROUND_VALUE = 1;
-	private static final String MSG_ERROR_MIN_ROUND = String.format("라운드값은 최소 %d부터 가능합니다.", ROUND_VALUE);
+	private static final String MSG_ERROR_MIN_ROUND = String.format("[ERROR] 라운드값은 최소 %d부터 가능합니다.", ROUND_VALUE);
+	private static final String INPUT_PATTERN_NUMBER_ONLY = "^[0-9]*$";
+	private static final String MSG_ERROR_INPUT_TYPE = "[ERROR] 숫자를 입력해 주세요.";
 
 	private final int round;
 
 	private final AtomicInteger currentRound = new AtomicInteger();
+
+	public Round(final String round) {
+		this(toInt(round));
+	}
+
+	private static int toInt(final String round) {
+		validationStringRound(round);
+		return Integer.parseInt(round);
+	}
+
+	private static void validationStringRound(final String round) {
+		if (!round.matches(INPUT_PATTERN_NUMBER_ONLY)) {
+			throw new NumberFormatException(MSG_ERROR_INPUT_TYPE);
+		}
+	}
 
 	public Round(final int round) {
 		validationRound(round);
@@ -35,7 +52,7 @@ public class Round {
 		return round;
 	}
 
-	public AtomicInteger currentRound(){
+	public AtomicInteger currentRound() {
 		return currentRound;
 	}
 
