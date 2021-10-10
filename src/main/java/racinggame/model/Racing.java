@@ -20,11 +20,11 @@ public class Racing {
 
 	private final Cars cars;
 
-	public Racing(final int round, final String names) {
-		this(new Round(round), new Cars(names));
+	public Racing(final String names, final int round) {
+		this(new Cars(names), new Round(round));
 	}
 
-	public Racing(final Round round, final Cars cars) {
+	public Racing(final Cars cars, final Round round) {
 		this.round = round;
 		this.cars = cars;
 	}
