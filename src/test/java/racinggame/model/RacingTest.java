@@ -12,7 +12,7 @@ class RacingTest {
 	@DisplayName("경주를 실행하여 결과값이 0 또는 1이 반환되는지 확인한다.")
 	@Test
 	void createRacingResultTest() {
-		Racing racing = new Racing(1, "a,b,c");
+		Racing racing = new Racing("a,b,c", 1);
 		racing.play();
 
 		assertThat(racing.racingResult()).anySatisfy(
@@ -26,7 +26,7 @@ class RacingTest {
 	@ParameterizedTest
 	@CsvSource(value = {"1|3|true", "3|3|false"}, delimiter = '|')
 	void isContinueTest(int targetRound, int maxRound, boolean isMaxRound) {
-		Racing racing = new Racing(maxRound, "a,b,c");
+		Racing racing = new Racing("a,b,c", maxRound);
 
 		for (int currentRound = 0; currentRound < targetRound; currentRound++) {
 			racing.isContinue();
