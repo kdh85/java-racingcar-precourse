@@ -1,6 +1,8 @@
 package racinggame;
 
+import racinggame.model.Cars;
 import racinggame.model.Racing;
+import racinggame.model.Round;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
@@ -10,11 +12,8 @@ public class Application {
 	private static final String MSG_INSERT_MAX_ROUND = "시도할 회수는 몇회인가요?";
 
 	public static void main(String[] args) {
-		
-		String names = InputView.inputData(MSG_INSERT_CAR_NAMES);
-		String maxRound = InputView.inputData(MSG_INSERT_MAX_ROUND);
 
-		Racing racing = new Racing(toInt(maxRound), names);
+		Racing racing = new Racing(createCars(), createRound());
 
 		ResultView.printResultTitle();
 
@@ -27,7 +26,30 @@ public class Application {
 		ResultView.printWinner(racing.winner());
 	}
 
-	private static int toInt(final String maxRound) {
-		return Integer.parseInt(maxRound);
+	private static Cars createCars() {
+		Cars cars = null;
+
+		while (cars == null) {
+			try {
+				cars = new Cars(InputView.inputData(MSG_INSERT_CAR_NAMES));
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			}
+		}
+		return cars;
 	}
+
+	private static Round createRound() {
+		Round round = null;
+
+		while (round == null) {
+			try {
+				round = new Round(InputView.inputData(MSG_INSERT_MAX_ROUND));
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			}
+		}
+		return round;
+	}
+
 }
