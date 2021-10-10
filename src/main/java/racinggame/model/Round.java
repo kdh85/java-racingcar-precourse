@@ -23,8 +23,8 @@ public class Round {
 		}
 	}
 
-	public int increaseRound() {
-		return currentRound.incrementAndGet();
+	public void increaseRound() {
+		currentRound.incrementAndGet();
 	}
 
 	public boolean isMaxRound() {
@@ -33,6 +33,10 @@ public class Round {
 
 	public int maxRound() {
 		return round;
+	}
+
+	public AtomicInteger currentRound(){
+		return currentRound;
 	}
 
 	@Override
