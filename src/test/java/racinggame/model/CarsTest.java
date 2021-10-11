@@ -6,11 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import racinggame.model.dto.RacingResultDto;
 
 class CarsTest {
 
@@ -56,12 +57,12 @@ class CarsTest {
 		newCars.moveEachCars(Arrays.asList(1, 2));
 		newCars.sameMaxDistanceCars();
 
-		Map<String, Integer> result = newCars.result();
+		RacingResultDto result = newCars.roundResult();
 
 		assertAll(
-			() -> assertThat(result.get("a")).isEqualTo(0),
-			() -> assertThat(result.get("b")).isEqualTo(1),
-			() -> assertThat(result.get("c")).isEqualTo(1)
+			() -> assertThat(result.getMoveDistance("a")).isEqualTo(0),
+			() -> assertThat(result.getMoveDistance("b")).isEqualTo(1),
+			() -> assertThat(result.getMoveDistance("c")).isEqualTo(1)
 		);
 	}
 }

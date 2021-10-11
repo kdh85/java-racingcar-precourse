@@ -15,7 +15,7 @@ class RacingTest {
 		Racing racing = new Racing("a,b,c", 1);
 		racing.play();
 
-		assertThat(racing.racingResult()).anySatisfy(
+		assertThat(racing.racingRoundResult().getRacingResult()).anySatisfy(
 			(name, distance) -> {
 				assertThat(distance).isGreaterThanOrEqualTo(0);
 				assertThat(distance).isLessThanOrEqualTo(1);
