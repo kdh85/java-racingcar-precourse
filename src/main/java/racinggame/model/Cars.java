@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 import racinggame.model.dto.RacingResultDto;
 
@@ -15,6 +17,7 @@ public class Cars {
 	private static final String SPLIT_SEPARATOR = ",";
 	private static final String MSG_ERROR_CAR_INDEX = "유효한 차량선택이 아닙니다.";
 	private static final int FIRST_CAR_INDEX = 0;
+	private static final String MSG_ERROR_DUPLICATE_CAR = "[ERROR] 중복된 차량이름을 사용 할 수 없습니다. 다시 입력해 주세요.";
 
 	private final List<Car> cars;
 
@@ -36,7 +39,24 @@ public class Cars {
 	}
 
 	private static List<String> splitNames(final String names) {
-		return Arrays.asList(names.split(SPLIT_SEPARATOR));
+
+		List<String> splitNames = Arrays.asList(names.split(SPLIT_SEPARATOR));
+
+		validationDuplicateCarNames(splitNames);
+
+		return splitNames;
+	}
+
+	private static void validationDuplicateCarNames(final List<String> splitNames) {
+		Set<String> duplicateNames = new HashSet<>(splitNames);
+
+		if (isNotSameSize(splitNames, duplicateNames)) {
+			throw new IllegalArgumentException(MSG_ERROR_DUPLICATE_CAR);
+		}
+	}
+
+	private static boolean isNotSameSize(final List<String> splitNames, final Set<String> duplicateNames) {
+		return duplicateNames.size() != splitNames.size();
 	}
 
 	public void moveEachCars(final List<Integer> movingCarIndex) {
@@ -84,7 +104,7 @@ public class Cars {
 	}
 
 	private void addMaxCar(final List<Car> maxCars, final Car car) {
-		if(car.isSameDistance(maxDistanceCars())){
+		if (car.isSameDistance(maxDistanceCars())) {
 			maxCars.add(car);
 		}
 	}
