@@ -20,9 +20,13 @@ public class CarName {
 			throw new IllegalArgumentException(MSG_ERROR_EMPTY_NAME);
 		}
 
-		if (carName.length() > MAX_CAR_NAME_LENGTH) {
+		if (isLongerThanMaxLength(carName)) {
 			throw new IllegalArgumentException(MSG_ERROR_NAME_LENGTH);
 		}
+	}
+
+	private boolean isLongerThanMaxLength(final String carName) {
+		return carName.length() > MAX_CAR_NAME_LENGTH;
 	}
 
 	public boolean isSameName(final CarName carName) {
