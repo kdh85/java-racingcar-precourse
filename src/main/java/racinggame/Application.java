@@ -28,11 +28,12 @@ public class Application {
 	}
 
 	private static Cars createCars() {
-		Cars cars = tryCreateCars();
+		Cars cars;
 
-		while (cars == null) {
+		do {
 			cars = tryCreateCars();
-		}
+		} while (cars == null);
+
 		return cars;
 	}
 
@@ -48,11 +49,12 @@ public class Application {
 	}
 
 	private static Round createRound() {
-		Round round = null;
+		Round round;
 
-		while (round == null) {
+		do {
 			round = tryCreateRound();
-		}
+		} while (round == null);
+
 		return round;
 	}
 
