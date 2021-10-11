@@ -1,6 +1,5 @@
 package racinggame.view;
 
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import racinggame.model.dto.RacingResultDto;
@@ -10,6 +9,7 @@ public class ResultView {
 	private static final String MSG_RESULT_TITLE = "실행 결과";
 	private static final String PROGRESS_BAR = "-";
 	private static final String MSG_WINNER = "최종 우승자는 %s 입니다.";
+	private static final String NAME_BAR_SEPARATOR = " : ";
 
 	public static void printResultTitle() {
 		System.out.println(MSG_RESULT_TITLE);
@@ -18,7 +18,7 @@ public class ResultView {
 	public static void printRacingProgress(final RacingResultDto racingResultDto) {
 
 		for (String carName : racingResultDto.getCarName()) {
-			System.out.println(carName + " : " + printRacingBar(racingResultDto.getMoveDistance(carName)));
+			System.out.println(carName + NAME_BAR_SEPARATOR + printRacingBar(racingResultDto.getMoveDistance(carName)));
 		}
 		System.out.println();
 	}
@@ -36,6 +36,6 @@ public class ResultView {
 	}
 
 	public static void printWinner(final String winner) {
-		System.out.printf((MSG_WINNER) + "%n", winner);
+		System.out.printf((MSG_WINNER) + System.lineSeparator(), winner);
 	}
 }
