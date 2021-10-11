@@ -69,9 +69,13 @@ public class Cars {
 
 	private void validationCarIndex(final Integer carIndex) {
 
-		if (carIndex > carCount()) {
+		if (isGreaterThanCarCount(carIndex)) {
 			throw new IllegalArgumentException(MSG_ERROR_CAR_INDEX);
 		}
+	}
+
+	private boolean isGreaterThanCarCount(final Integer carIndex) {
+		return carIndex > carCount();
 	}
 
 	public int carCount() {
