@@ -65,4 +65,12 @@ class CarsTest {
 			() -> assertThat(result.getMoveDistance("c")).isEqualTo(1)
 		);
 	}
+
+	@DisplayName("입력되는 차랑명칭의 중복이 발생하면 에러가 반환된다.")
+	@Test
+	void validationDuplicateTest() {
+		assertThatThrownBy(
+			()-> new Cars("a,b,a")
+		).isInstanceOf(IllegalArgumentException.class);
+	}
 }
