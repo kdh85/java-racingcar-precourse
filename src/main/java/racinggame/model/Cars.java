@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import racinggame.model.dto.RacingResultDto;
+
 public class Cars {
 
 	private static final String SPLIT_SEPARATOR = ",";
@@ -87,13 +89,13 @@ public class Cars {
 		}
 	}
 
-	public Map<String, Integer> result() {
+	public RacingResultDto roundResult() {
 		Map<String, Integer> result = new HashMap<>();
 
 		for (Car car : cars) {
 			result.put(car.carName(), car.distance());
 		}
-		return result;
+		return RacingResultDto.from(result);
 	}
 
 	@Override

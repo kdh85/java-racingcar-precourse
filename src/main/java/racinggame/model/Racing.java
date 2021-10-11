@@ -2,12 +2,12 @@ package racinggame.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import nextstep.utils.Randoms;
+import racinggame.model.dto.RacingResultDto;
 
 public class Racing {
 
@@ -55,8 +55,8 @@ public class Racing {
 		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) >= MOVABLE_NUMBER;
 	}
 
-	public Map<String,Integer> racingResult(){
-		return cars.result();
+	public RacingResultDto racingRoundResult(){
+		return cars.roundResult();
 	}
 
 	public boolean isContinue() {

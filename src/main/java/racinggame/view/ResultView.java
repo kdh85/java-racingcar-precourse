@@ -3,6 +3,8 @@ package racinggame.view;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import racinggame.model.dto.RacingResultDto;
+
 public class ResultView {
 
 	private static final String MSG_RESULT_TITLE = "실행 결과";
@@ -13,10 +15,10 @@ public class ResultView {
 		System.out.println(MSG_RESULT_TITLE);
 	}
 
-	public static void printRacingProgress(final Map<String, Integer> racingResult) {
+	public static void printRacingProgress(final RacingResultDto racingResultDto) {
 
-		for (String carName : racingResult.keySet()) {
-			System.out.println(carName + " : " + printRacingBar(racingResult.get(carName)));
+		for (String carName : racingResultDto.getCarName()) {
+			System.out.println(carName + " : " + printRacingBar(racingResultDto.getMoveDistance(carName)));
 		}
 		System.out.println();
 	}

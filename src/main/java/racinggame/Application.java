@@ -20,7 +20,7 @@ public class Application {
 		while (racing.isContinue()) {
 			racing.play();
 
-			ResultView.printRacingProgress(racing.racingResult());
+			ResultView.printRacingProgress(racing.racingRoundResult());
 		}
 
 		ResultView.printWinner(racing.winner());
@@ -33,7 +33,7 @@ public class Application {
 			try {
 				cars = new Cars(InputView.inputData(MSG_INSERT_CAR_NAMES));
 			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
+				System.out.println(e.getMessage());
 			}
 		}
 		return cars;
@@ -46,7 +46,7 @@ public class Application {
 			try {
 				round = new Round(InputView.inputData(MSG_INSERT_MAX_ROUND));
 			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
+				System.out.println(e.getMessage());
 			}
 		}
 		return round;
