@@ -1,5 +1,6 @@
 package racinggame;
 
+import racinggame.controller.RacingController;
 import racinggame.model.Cars;
 import racinggame.model.Racing;
 import racinggame.model.Round;
@@ -17,10 +18,10 @@ public class Application {
 
 		ResultView.printResultTitle();
 
-		while (racing.isContinue()) {
-			racing.play();
+		RacingController racingController = new RacingController();
 
-			ResultView.printRacingProgress(racing.racingRoundResult());
+		while (racing.isContinue()) {
+			ResultView.printRacingProgress(racingController.playRacing(racing));
 		}
 
 		ResultView.printWinner(racing.winner());
