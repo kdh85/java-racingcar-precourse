@@ -27,15 +27,17 @@ public class Application {
 	}
 
 	private static Cars createCars() {
-		Cars cars = null;
+		Cars cars = tryCreateCars();
 
 		while (cars == null) {
-			cars = tryCreateCars(cars);
+			cars = tryCreateCars();
 		}
 		return cars;
 	}
 
-	private static Cars tryCreateCars(Cars cars) {
+	private static Cars tryCreateCars() {
+		Cars cars = null;
+
 		try {
 			cars = new Cars(InputView.inputData(MSG_INSERT_CAR_NAMES));
 		} catch (IllegalArgumentException e) {
@@ -47,17 +49,19 @@ public class Application {
 	private static Round createRound() {
 		Round round = null;
 
-		round = tryCreateRound(round);
+		while (round == null) {
+			round = tryCreateRound();
+		}
 		return round;
 	}
 
-	private static Round tryCreateRound(Round round) {
-		while (round == null) {
-			try {
-				round = new Round(InputView.inputData(MSG_INSERT_MAX_ROUND));
-			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
-			}
+	private static Round tryCreateRound() {
+		Round round = null;
+
+		try {
+			round = new Round(InputView.inputData(MSG_INSERT_MAX_ROUND));
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		}
 		return round;
 	}
