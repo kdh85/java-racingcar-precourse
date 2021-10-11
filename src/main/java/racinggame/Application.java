@@ -30,11 +30,16 @@ public class Application {
 		Cars cars = null;
 
 		while (cars == null) {
-			try {
-				cars = new Cars(InputView.inputData(MSG_INSERT_CAR_NAMES));
-			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
-			}
+			cars = tryCreateCars(cars);
+		}
+		return cars;
+	}
+
+	private static Cars tryCreateCars(Cars cars) {
+		try {
+			cars = new Cars(InputView.inputData(MSG_INSERT_CAR_NAMES));
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		}
 		return cars;
 	}
@@ -42,6 +47,11 @@ public class Application {
 	private static Round createRound() {
 		Round round = null;
 
+		round = tryCreateRound(round);
+		return round;
+	}
+
+	private static Round tryCreateRound(Round round) {
 		while (round == null) {
 			try {
 				round = new Round(InputView.inputData(MSG_INSERT_MAX_ROUND));
