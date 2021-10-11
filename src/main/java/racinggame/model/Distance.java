@@ -20,9 +20,13 @@ public class Distance {
 	}
 
 	private void validationDistance(final int distance) {
-		if (distance < MIN_DISTANCE) {
+		if (isGreaterThan(distance)) {
 			throw new IllegalArgumentException(MSG_ERROR_MIN_DISTANCE);
 		}
+	}
+
+	private boolean isGreaterThan(final int distance) {
+		return distance < MIN_DISTANCE;
 	}
 
 	public void moveForward() {
@@ -30,10 +34,14 @@ public class Distance {
 	}
 
 	public Distance maxDistance(final Distance targetDistance) {
-		if (this.distance > targetDistance.distance) {
+		if (isGreaterThan(targetDistance)) {
 			return this;
 		}
 		return targetDistance;
+	}
+
+	private boolean isGreaterThan(final Distance targetDistance) {
+		return this.distance > targetDistance.distance;
 	}
 
 	public int moveDistance() {
