@@ -1,19 +1,12 @@
 package racinggame.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
-import java.util.concurrent.atomic.AtomicInteger;
 
-import nextstep.utils.Randoms;
 import racinggame.model.dto.RacingResultDto;
 
 public class Racing {
 
-	private static final int START_NUMBER = 0;
-	private static final int END_NUMBER = 9;
-	private static final int MOVABLE_NUMBER = 4;
 	private static final String WINNER_SEPARATOR = ", ";
 
 	private final Round round;
@@ -30,29 +23,7 @@ public class Racing {
 	}
 
 	public void play() {
-		cars.moveEachCars(choiceMovingCars());
-	}
-
-	private List<Integer> choiceMovingCars() {
-		List<Integer> moveCarIndex = new ArrayList<>();
-
-		AtomicInteger index = new AtomicInteger();
-
-		while (index.intValue() < cars.carCount()) {
-			addMovingCar(moveCarIndex, index.getAndIncrement());
-		}
-
-		return moveCarIndex;
-	}
-
-	private void addMovingCar(final List<Integer> moveCarIndex, final int carIndex) {
-		if (isMovable()) {
-			moveCarIndex.add(carIndex);
-		}
-	}
-
-	private boolean isMovable() {
-		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) >= MOVABLE_NUMBER;
+		cars.moveEachCars();
 	}
 
 	public RacingResultDto racingRoundResult(){
