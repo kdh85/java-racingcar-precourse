@@ -32,37 +32,31 @@ class CarsTest {
 		assertThat(newCars).isEqualTo(new Cars("a,b,c"));
 	}
 
-	@DisplayName("이동할 차량을 선택받으면 해당차량만 움직이고 이동거리를 비교하여 결과를 확인한다.")
-	@Test
-	void movingEachCarsTest() {
-		newCars.moveEachCars(Collections.singletonList(1));
-		assertThat(newCars.maxDistanceCars()).isEqualTo(new Car("b", 1));
-	}
-
 	@DisplayName("최대거리인 자동차와 동일한 거리의 차들을 반환한다.")
 	@Test
 	void sameDistanceCarsTest() {
-		newCars.moveEachCars(Arrays.asList(1, 2));
+
 		List<Car> maxCars = newCars.sameMaxDistanceCars();
 
 		assertThat(maxCars).containsExactly(
-			new Car("b", 1),
-			new Car("c", 1)
+			new Car("a", 0),
+			new Car("b", 0),
+			new Car("c", 0)
 		);
 	}
 
 	@DisplayName("주행결과를 차량과 이동거리로 반환한다.")
 	@Test
 	void getResultTest() {
-		newCars.moveEachCars(Arrays.asList(1, 2));
+
 		newCars.sameMaxDistanceCars();
 
 		RacingResultDto result = newCars.roundResult();
 
 		assertAll(
 			() -> assertThat(result.getMoveDistance("a")).isEqualTo(0),
-			() -> assertThat(result.getMoveDistance("b")).isEqualTo(1),
-			() -> assertThat(result.getMoveDistance("c")).isEqualTo(1)
+			() -> assertThat(result.getMoveDistance("b")).isEqualTo(0),
+			() -> assertThat(result.getMoveDistance("c")).isEqualTo(0)
 		);
 	}
 
