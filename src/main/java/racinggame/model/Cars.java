@@ -10,14 +10,17 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import nextstep.utils.Randoms;
 import racinggame.model.dto.RacingResultDto;
 
 public class Cars {
 
 	private static final String SPLIT_SEPARATOR = ",";
-	private static final String MSG_ERROR_CAR_INDEX = "유효한 차량선택이 아닙니다.";
-	private static final int FIRST_CAR_INDEX = 0;
 	private static final String MSG_ERROR_DUPLICATE_CAR = "[ERROR] 중복된 차량이름을 사용 할 수 없습니다. 다시 입력해 주세요.";
+
+	private static final int START_NUMBER = 0;
+	private static final int END_NUMBER = 9;
+	private static final int MOVABLE_NUMBER = 4;
 
 	private final List<Car> cars;
 
@@ -59,27 +62,20 @@ public class Cars {
 		return duplicateNames.size() != splitNames.size();
 	}
 
-	public void moveEachCars(final List<Integer> movingCarIndex) {
-
-		for (Integer carIndex : movingCarIndex) {
-			validationCarIndex(carIndex);
-			cars.get(carIndex).moveTheCar();
+	public void moveEachCars() {
+		for (Car car : cars) {
+			moveEachCar(car);
 		}
 	}
 
-	private void validationCarIndex(final Integer carIndex) {
-
-		if (isGreaterThanCarCount(carIndex)) {
-			throw new IllegalArgumentException(MSG_ERROR_CAR_INDEX);
+	private void moveEachCar(final Car car) {
+		if(isMovable()){
+			car.moveTheCar();
 		}
 	}
 
-	private boolean isGreaterThanCarCount(final Integer carIndex) {
-		return carIndex > carCount();
-	}
-
-	public int carCount() {
-		return cars.size();
+	private boolean isMovable() {
+		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) >= MOVABLE_NUMBER;
 	}
 
 	public Car maxDistanceCars() {
@@ -93,7 +89,7 @@ public class Cars {
 	}
 
 	private Car firstCar() {
-		return cars.get(FIRST_CAR_INDEX);
+		return cars.get(START_NUMBER);
 	}
 
 	public List<Car> sameMaxDistanceCars() {
